@@ -29,7 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:hint="Enter a guess here."/>
 
         <Button
             android:id="@+id/guess_button"
