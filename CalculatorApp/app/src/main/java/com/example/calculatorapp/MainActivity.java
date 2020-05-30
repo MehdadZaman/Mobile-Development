@@ -106,7 +106,14 @@ public class MainActivity extends AppCompatActivity {
 
             answerValue = firstNumberValue / secondNumberValue;
 
-            answerText.setText(String.format("Answer: %.2f", answerValue));
+            if(secondNumberValue == 0)
+            {
+                answerText.setText("Cannot divide by 0.");
+            }
+            else
+            {
+                answerText.setText(String.format("Answer: %.2f", answerValue));
+            }
         }
         catch(Exception e){}
     }
