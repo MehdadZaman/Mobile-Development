@@ -1,0 +1,2 @@
+rootProject.name='HighLowGame'
+include ':app'
