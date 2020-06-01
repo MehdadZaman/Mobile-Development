@@ -1,5 +1,7 @@
 package com.example.shoppinglist;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,11 +13,15 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class ScrollingActivity extends AppCompatActivity {
 
     ImageView plusIcon;
+
+    LinearLayout shoppingListLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +29,22 @@ public class ScrollingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        shoppingListLayout = findViewById(R.id.shoppingList);
+
+        shoppingListLayout.setBackgroundColor(Color.GRAY);
+
+        ShoppingItem sI = new ShoppingItem(this, 1, "HP laptop", "15.6 inch laptop", 500.30, false);
+
+        shoppingListLayout.addView(sI.mainLinearLayout);
+
+        ShoppingItem sI2 = new ShoppingItem(this, 2, "HP laptop", "15.6 inch laptop", 500.30, false);
+
+        shoppingListLayout.addView(sI2.mainLinearLayout);
+
+        ShoppingItem sI3 = new ShoppingItem(this, 3, "HP laptop", "15.6 inch laptop", 500.30, false);
+
+        shoppingListLayout.addView(sI3.mainLinearLayout);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
