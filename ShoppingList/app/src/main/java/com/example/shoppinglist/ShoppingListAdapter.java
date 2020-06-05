@@ -3,12 +3,14 @@ package com.example.shoppinglist;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,25 +20,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.ShoppingListViewHolder>/* implements AddItemDialog.AddItemDialogListener*/{
+public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.ShoppingListViewHolder>{
 
     private ArrayList<ShoppingItem> mshoppingList;
 
+    private  ShoppingIListDataSource mshoppingIListDataSource;
+
+    private OnNoteListener mOnNoteListener;
+
     int currentPosition;
 
-    AddItemDialog editItemDialog;
-
-    public static class ShoppingListViewHolder extends RecyclerView.ViewHolder{
+    public static class ShoppingListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView displayName;
         TextView displayPrice;
         CheckBox displayPurchased;
         Button displayEditButton;
         Button displayDetailsButton;
+        Button displayDeleteButton;
         ImageView categoryImage;
         TextView displayDescription;
 
-        public ShoppingListViewHolder(View itemView) {
+        OnNoteListener onNoteListener;
+
+        public ShoppingListViewHolder(View itemView, OnNoteListener onNoteListener) {
             super(itemView);
 
             displayName = itemView.findViewById(R.id.productName);
@@ -44,13 +51,31 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
             displayPurchased = itemView.findViewById(R.id.purchasedItem);
             displayEditButton = itemView.findViewById(R.id.editButton);
             displayDetailsButton = itemView.findViewById(R.id.viewDetailsButton);
+            displayDeleteButton = itemView.findViewById(R.id.deleteItemButton);
             categoryImage = itemView.findViewById(R.id.categoryImage);
             displayDescription = itemView.findViewById(R.id.descriptionText);
+
+            this.onNoteListener = onNoteListener;
+
+            displayEditButton.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onNoteListener.onNoteClick(getAdapterPosition());
         }
     }
 
-    public ShoppingListAdapter(ArrayList<ShoppingItem> shoppingList){
+    public interface OnNoteListener{
+        void onNoteClick(int position);
+    }
+
+    public ShoppingListAdapter(ArrayList<ShoppingItem> shoppingList, OnNoteListener onNoteListener, ShoppingIListDataSource shoppingIListDataSource){
         this.mshoppingList= shoppingList;
+
+        this.mOnNoteListener = onNoteListener;
+
+        this.mshoppingIListDataSource = shoppingIListDataSource;
     }
 
     @NonNull
@@ -58,33 +83,40 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     public ShoppingListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_item, parent, false);
-        ShoppingListViewHolder slvh = new ShoppingListViewHolder(view);
+        ShoppingListViewHolder slvh = new ShoppingListViewHolder(view, mOnNoteListener);
         return slvh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ShoppingListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ShoppingListViewHolder holder, final int position) {
 
-        ShoppingItem currentShoppingItem = mshoppingList.get(position);
+        final ShoppingItem currentShoppingItem = mshoppingList.get(position);
         currentPosition = position;
 
         holder.displayName.setText(currentShoppingItem.getName());
         holder.displayPrice.setText("$" + currentShoppingItem.getPrice());
-        holder.displayPurchased.setChecked(currentShoppingItem.isPurchased());
+
+        if(currentShoppingItem.isPurchased() == 1) {
+            holder.displayPurchased.setChecked(true);
+        }
+        else
+        {
+            holder.displayPurchased.setChecked(false);
+        }
 
         holder.displayDescription.setText(currentShoppingItem.getDescription());
 
-       holder.displayEditButton.setOnClickListener(new View.OnClickListener() {
+        holder.displayPurchased.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                editItemDialog = new AddItemDialog();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true) {
+                    currentShoppingItem.setPurchased(1);
+                }
+                else {
+                    currentShoppingItem.setPurchased(0);
+                }
 
-                /*FragmentActivity fa = new FragmentActivity();
-                editItemDialog.show(fa.getSupportFragmentManager(), "Edit Shopping List Item");*/
-
-                /*Activity activity = (Activity) v.getContext();
-
-                editItemDialog.show((((FragmentActivity)activity).getSupportFragmentManager()), "Add Shopping List Item");*/
+                mshoppingIListDataSource.updateShoppingItem(currentShoppingItem);
             }
         });
 
@@ -101,6 +133,17 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
                     holder.displayDetailsButton.setText("SHOW DETAILS");
                     holder.displayDescription.setVisibility(View.INVISIBLE);
                 }
+            }
+        });
+
+        holder.displayDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mshoppingIListDataSource.deleteShoppingItem(mshoppingList.get(position));
+
+                mshoppingList.remove(position);
+
+                notifyDataSetChanged();
             }
         });
 
@@ -124,20 +167,4 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     public int getItemCount() {
         return mshoppingList.size();
     }
-
-    /*@Override
-    public void applyTexts(int category, String itemName, String itemCost, String itemDescription, boolean itemPurchased) {
-
-        editItemDialog.dismiss();
-
-        *//*mshoppingList.get(currentPosition).setCategory(category);
-        mshoppingList.get(currentPosition).setName(itemName);
-        mshoppingList.get(currentPosition).setPrice(itemCost);
-        mshoppingList.get(currentPosition).setDescription(itemDescription);
-        mshoppingList.get(currentPosition).setPurchased(itemPurchased);*//*
-
-        *//*notifyDataSetChanged();*//*
-
-        *//*editItemDialog.dismiss();*//*
-    }*/
 }

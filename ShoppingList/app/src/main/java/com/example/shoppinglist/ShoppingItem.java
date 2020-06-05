@@ -7,9 +7,9 @@ public class ShoppingItem {
     String name;
     String description;
     String price;
-    boolean purchased;
+    int purchased;
 
-    public ShoppingItem(int category, String name, String description, String price, boolean purchased) {
+    public ShoppingItem(int category, String name, String description, String price, int purchased) {
         this.category = category;
         this.name = name;
         this.description = description;
@@ -25,11 +25,11 @@ public class ShoppingItem {
         this.shoppingListID = shoppingListID;
     }
 
-    public boolean isPurchased() {
+    public int isPurchased() {
         return purchased;
     }
 
-    public void setPurchased(boolean purchased) {
+    public void setPurchased(int purchased) {
         this.purchased = purchased;
     }
 

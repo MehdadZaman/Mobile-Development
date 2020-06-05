@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class AddItemDialog extends AppCompatDialogFragment {
+public class EditItemDialog extends AppCompatDialogFragment {
 
     Spinner categoriesSpinner;
 
@@ -28,7 +28,7 @@ public class AddItemDialog extends AppCompatDialogFragment {
 
     Button saveButton;
 
-    private AddItemDialogListener addItemDialogListener;
+    private EditItemDialogListener editItemDialogListener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
@@ -64,20 +64,20 @@ public class AddItemDialog extends AppCompatDialogFragment {
 
                 if(TextUtils.isEmpty(name))
                 {
-                    Toast.makeText(getContext(), "Name Field is Empty!", Toast.LENGTH_SHORT).show();
+                    name = "";
                 }
-                else if(TextUtils.isEmpty(price))
+
+                if(TextUtils.isEmpty(price))
                 {
-                    Toast.makeText(getContext(), "Price Field is Empty!", Toast.LENGTH_SHORT).show();
+                    price = "";
                 }
-                else if(TextUtils.isEmpty(description))
+
+                if(TextUtils.isEmpty(description))
                 {
-                    Toast.makeText(getContext(), "Description Field is Empty!", Toast.LENGTH_SHORT).show();
+                    description = "";
                 }
-                else
-                {
-                    addItemDialogListener.applyTexts(category, name, description, price, purchased);
-                }
+
+                editItemDialogListener.applyTexts2(category, name, description, price, purchased);
             }
         });
 
@@ -90,7 +90,7 @@ public class AddItemDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try {
-            addItemDialogListener = (AddItemDialogListener)context;
+            editItemDialogListener = (EditItemDialogListener)context;
         }
         catch(ClassCastException e)
         {
@@ -98,7 +98,7 @@ public class AddItemDialog extends AppCompatDialogFragment {
         }
     }
 
-    public interface AddItemDialogListener{
-        void applyTexts(int category, String itemName, String itemDescription, String itemCost, boolean itemPurchased);
+    public interface EditItemDialogListener{
+        void applyTexts2(int category, String itemName, String itemDescription, String itemCost, boolean itemPurchased);
     }
 }

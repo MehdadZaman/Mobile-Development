@@ -46,17 +46,21 @@
                     android:id="@+id/productName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20dp"
                     android:text="Product Name"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:layout_margin="5dp"/>
 
                 <TextView
                     android:id="@+id/productPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$0.00"/>
+                    android:text="$0.00"
+                    android:layout_marginLeft="5dp"/>
 
                 <CheckBox
                     android:id="@+id/purchasedItem"
+                    android:filterTouchesWhenObscured="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Purchased"/>
@@ -83,6 +87,12 @@
                     android:layout_height="wrap_content"
                     android:text="SHOW DETAILS"/>
 
+                <Button
+                    android:id="@+id/deleteItemButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DELETE"/>
+
             </LinearLayout>
 
         </RelativeLayout>
@@ -92,6 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
             android:text="Description" />
 
     </LinearLayout>
