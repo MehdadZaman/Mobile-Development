@@ -24,6 +24,14 @@
             android:textColor="#33f"
             android:textStyle="bold"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Pick a number between 0 and 100"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+
         <EditText
             android:id="@+id/answer_edit_text"
             android:layout_width="match_parent"
