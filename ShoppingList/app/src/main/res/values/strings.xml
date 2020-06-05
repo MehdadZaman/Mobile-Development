@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Shopping List</string>
-    
+
     <string-array name="Categories">
         <item>Laptop</item>
         <item>Airplane Ticket</item>
         <item>Food</item>
     </string-array>
-    
+
     <string name="action_settings">Settings</string>
 </resources>

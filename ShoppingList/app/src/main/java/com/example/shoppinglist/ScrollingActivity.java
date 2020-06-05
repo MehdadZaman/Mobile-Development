@@ -1,25 +1,33 @@
 package com.example.shoppinglist;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ScrollingActivity extends AppCompatActivity implements AddItemDialog.AddItemDialogListener, ShoppingListAdapter.OnNoteListener, EditItemDialog.EditItemDialogListener {
 
@@ -33,6 +41,7 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
 
     ShoppingIListDataSource shoppingIListDataSource;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +54,27 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
         shoppingIListDataSource = new ShoppingIListDataSource(this);
         shoppingIListDataSource.open();
         populateShoppingList();
+
+        int sortCategory = getIntent().getIntExtra("CATEGORY", -1);
+        int sortOrder = getIntent().getIntExtra("ORDER", -1);
+
+        if(sortCategory == R.id.name_sort_category)
+        {
+            shoppingList.sort(new NameComparator());
+        }
+        else if(sortCategory == R.id.price_sort_category)
+        {
+            shoppingList.sort(new PriceComparator());
+        }
+        else if(sortCategory == R.id.purchase_status_sort_category)
+        {
+            shoppingList.sort(new PurchasedStatusComparator());
+        }
+
+        if(sortOrder == R.id.sort_descending)
+        {
+            Collections.reverse(shoppingList);
+        }
 
         recyclerView = findViewById(R.id.shoppingList);
         recyclerView.setHasFixedSize(true);
@@ -80,6 +110,8 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(ScrollingActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -156,5 +188,39 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
         shoppingIListDataSource.updateShoppingItem(shoppingList.get(currentEditPosition));
 
         adapter.notifyDataSetChanged();
+    }
+
+    static class NameComparator implements Comparator<ShoppingItem> {
+        @Override
+        public int compare(ShoppingItem o1, ShoppingItem o2) {
+            return o1.getName().compareTo(o2.getName());
+        }
+    }
+
+    static class PriceComparator implements Comparator<ShoppingItem> {
+
+        @Override
+        public int compare(ShoppingItem o1, ShoppingItem o2) {
+            if(Double.parseDouble(o1.getPrice()) >  Double.parseDouble(o2.getPrice()))
+            {
+                return 1;
+            }
+            else if(Double.parseDouble(o1.getPrice()) <  Double.parseDouble(o2.getPrice()))
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+
+    static class PurchasedStatusComparator implements Comparator<ShoppingItem> {
+
+        @Override
+        public int compare(ShoppingItem o1, ShoppingItem o2) {
+            return (o1.isPurchased() -  o2.isPurchased());
+        }
     }
 }
