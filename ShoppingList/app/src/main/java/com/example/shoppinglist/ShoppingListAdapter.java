@@ -24,7 +24,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
     private ArrayList<ShoppingItem> mshoppingList;
 
-    private  ShoppingIListDataSource mshoppingIListDataSource;
+    private  ShoppingIListDataSource mshoppingListDataSource;
 
     private OnNoteListener mOnNoteListener;
 
@@ -75,7 +75,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
         this.mOnNoteListener = onNoteListener;
 
-        this.mshoppingIListDataSource = shoppingIListDataSource;
+        this.mshoppingListDataSource = shoppingIListDataSource;
     }
 
     @NonNull
@@ -116,7 +116,9 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
                     currentShoppingItem.setPurchased(0);
                 }
 
-                mshoppingIListDataSource.updateShoppingItem(currentShoppingItem);
+                mshoppingListDataSource.open();
+                mshoppingListDataSource.updateShoppingItem(currentShoppingItem);
+                mshoppingListDataSource.close();
             }
         });
 
@@ -139,7 +141,9 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         holder.displayDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mshoppingIListDataSource.deleteShoppingItem(mshoppingList.get(position));
+                mshoppingListDataSource.open();
+                mshoppingListDataSource.deleteShoppingItem(mshoppingList.get(position));
+                mshoppingListDataSource.close();
 
                 mshoppingList.remove(position);
 

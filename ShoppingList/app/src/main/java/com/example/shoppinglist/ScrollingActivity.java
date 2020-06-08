@@ -39,7 +39,7 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
 
     AddItemDialog addItemDialog;
 
-    ShoppingIListDataSource shoppingIListDataSource;
+    ShoppingIListDataSource shoppingListDataSource;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -51,9 +51,11 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
 
         shoppingList = new ArrayList<>();
 
-        shoppingIListDataSource = new ShoppingIListDataSource(this);
-        shoppingIListDataSource.open();
+        shoppingListDataSource = new ShoppingIListDataSource(this);
+
+        shoppingListDataSource.open();
         populateShoppingList();
+        shoppingListDataSource.close();
 
         int sortCategory = getIntent().getIntExtra("CATEGORY", -1);
         int sortOrder = getIntent().getIntExtra("ORDER", -1);
@@ -79,7 +81,7 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
         recyclerView = findViewById(R.id.shoppingList);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        adapter = new ShoppingListAdapter(shoppingList, this, shoppingIListDataSource);
+        adapter = new ShoppingListAdapter(shoppingList, this, shoppingListDataSource);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -119,7 +121,7 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
 
     public void populateShoppingList()
     {
-        Cursor data = shoppingIListDataSource.getData();
+        Cursor data = shoppingListDataSource.getData();
         while(data.moveToNext()){
             ShoppingItem tempShoppingItem = new ShoppingItem(data.getInt(1), data.getString(2), data.getString(3), data.getString(4), data.getInt(5));
             tempShoppingItem.setShoppingListID(data.getInt(0));
@@ -141,9 +143,13 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
         }
 
         shoppingList.add(currentShoppingItem);
-        shoppingIListDataSource.insertShoppingItem(currentShoppingItem);
 
-        currentShoppingItem.setShoppingListID(shoppingIListDataSource.getLastShoppingItemId());
+        shoppingListDataSource.open();
+        shoppingListDataSource.insertShoppingItem(currentShoppingItem);
+
+        currentShoppingItem.setShoppingListID(shoppingListDataSource.getLastShoppingItemId());
+        shoppingListDataSource.close();
+
         adapter.notifyDataSetChanged();
     }
 
@@ -185,7 +191,9 @@ public class ScrollingActivity extends AppCompatActivity implements AddItemDialo
             shoppingList.get(currentEditPosition).setPurchased(0);
         }
 
-        shoppingIListDataSource.updateShoppingItem(shoppingList.get(currentEditPosition));
+        shoppingListDataSource.open();
+        shoppingListDataSource.updateShoppingItem(shoppingList.get(currentEditPosition));
+        shoppingListDataSource.close();
 
         adapter.notifyDataSetChanged();
     }
