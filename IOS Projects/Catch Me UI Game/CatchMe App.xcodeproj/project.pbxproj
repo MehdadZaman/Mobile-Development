@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EFAB41FF2495DB0000A46D0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAB41FE2495DB0000A46D0E /* AppDelegate.swift */; };
+		EFAB42012495DB0000A46D0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAB42002495DB0000A46D0E /* SceneDelegate.swift */; };
+		EFAB42032495DB0000A46D0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAB42022495DB0000A46D0E /* ViewController.swift */; };
+		EFAB42062495DB0000A46D0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFAB42042495DB0000A46D0E /* Main.storyboard */; };
+		EFAB42082495DB0300A46D0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFAB42072495DB0300A46D0E /* Assets.xcassets */; };
+		EFAB420B2495DB0300A46D0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFAB42092495DB0300A46D0E /* LaunchScreen.storyboard */; };
+		EFAB42162495DB0300A46D0E /* CatchMe_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAB42152495DB0300A46D0E /* CatchMe_AppTests.swift */; };
+		EFAB42212495DB0300A46D0E /* CatchMe_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAB42202495DB0300A46D0E /* CatchMe_AppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFAB42122495DB0300A46D0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFAB41F32495DB0000A46D0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFAB41FA2495DB0000A46D0E;
+			remoteInfo = "CatchMe App";
+		};
+		EFAB421D2495DB0300A46D0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFAB41F32495DB0000A46D0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFAB41FA2495DB0000A46D0E;
+			remoteInfo = "CatchMe App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EFAB41FB2495DB0000A46D0E /* CatchMe App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CatchMe App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFAB41FE2495DB0000A46D0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EFAB42002495DB0000A46D0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EFAB42022495DB0000A46D0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EFAB42052495DB0000A46D0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFAB42072495DB0300A46D0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFAB420A2495DB0300A46D0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFAB420C2495DB0300A46D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFAB42112495DB0300A46D0E /* CatchMe AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CatchMe AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFAB42152495DB0300A46D0E /* CatchMe_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchMe_AppTests.swift; sourceTree = "<group>"; };
+		EFAB42172495DB0300A46D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFAB421C2495DB0300A46D0E /* CatchMe AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CatchMe AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFAB42202495DB0300A46D0E /* CatchMe_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchMe_AppUITests.swift; sourceTree = "<group>"; };
+		EFAB42222495DB0300A46D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFAB41F82495DB0000A46D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAB420E2495DB0300A46D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAB42192495DB0300A46D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EFAB41F22495DB0000A46D0E = {
+			isa = PBXGroup;
+			children = (
+				EFAB41FD2495DB0000A46D0E /* CatchMe App */,
+				EFAB42142495DB0300A46D0E /* CatchMe AppTests */,
+				EFAB421F2495DB0300A46D0E /* CatchMe AppUITests */,
+				EFAB41FC2495DB0000A46D0E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EFAB41FC2495DB0000A46D0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFAB41FB2495DB0000A46D0E /* CatchMe App.app */,
+				EFAB42112495DB0300A46D0E /* CatchMe AppTests.xctest */,
+				EFAB421C2495DB0300A46D0E /* CatchMe AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFAB41FD2495DB0000A46D0E /* CatchMe App */ = {
+			isa = PBXGroup;
+			children = (
+				EFAB41FE2495DB0000A46D0E /* AppDelegate.swift */,
+				EFAB42002495DB0000A46D0E /* SceneDelegate.swift */,
+				EFAB42022495DB0000A46D0E /* ViewController.swift */,
+				EFAB42042495DB0000A46D0E /* Main.storyboard */,
+				EFAB42072495DB0300A46D0E /* Assets.xcassets */,
+				EFAB42092495DB0300A46D0E /* LaunchScreen.storyboard */,
+				EFAB420C2495DB0300A46D0E /* Info.plist */,
+			);
+			path = "CatchMe App";
+			sourceTree = "<group>";
+		};
+		EFAB42142495DB0300A46D0E /* CatchMe AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				EFAB42152495DB0300A46D0E /* CatchMe_AppTests.swift */,
+				EFAB42172495DB0300A46D0E /* Info.plist */,
+			);
+			path = "CatchMe AppTests";
+			sourceTree = "<group>";
+		};
+		EFAB421F2495DB0300A46D0E /* CatchMe AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EFAB42202495DB0300A46D0E /* CatchMe_AppUITests.swift */,
+				EFAB42222495DB0300A46D0E /* Info.plist */,
+			);
+			path = "CatchMe AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFAB41FA2495DB0000A46D0E /* CatchMe App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFAB42252495DB0300A46D0E /* Build configuration list for PBXNativeTarget "CatchMe App" */;
+			buildPhases = (
+				EFAB41F72495DB0000A46D0E /* Sources */,
+				EFAB41F82495DB0000A46D0E /* Frameworks */,
+				EFAB41F92495DB0000A46D0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CatchMe App";
+			productName = "CatchMe App";
+			productReference = EFAB41FB2495DB0000A46D0E /* CatchMe App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EFAB42102495DB0300A46D0E /* CatchMe AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFAB42282495DB0300A46D0E /* Build configuration list for PBXNativeTarget "CatchMe AppTests" */;
+			buildPhases = (
+				EFAB420D2495DB0300A46D0E /* Sources */,
+				EFAB420E2495DB0300A46D0E /* Frameworks */,
+				EFAB420F2495DB0300A46D0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFAB42132495DB0300A46D0E /* PBXTargetDependency */,
+			);
+			name = "CatchMe AppTests";
+			productName = "CatchMe AppTests";
+			productReference = EFAB42112495DB0300A46D0E /* CatchMe AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EFAB421B2495DB0300A46D0E /* CatchMe AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFAB422B2495DB0300A46D0E /* Build configuration list for PBXNativeTarget "CatchMe AppUITests" */;
+			buildPhases = (
+				EFAB42182495DB0300A46D0E /* Sources */,
+				EFAB42192495DB0300A46D0E /* Frameworks */,
+				EFAB421A2495DB0300A46D0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFAB421E2495DB0300A46D0E /* PBXTargetDependency */,
+			);
+			name = "CatchMe AppUITests";
+			productName = "CatchMe AppUITests";
+			productReference = EFAB421C2495DB0300A46D0E /* CatchMe AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFAB41F32495DB0000A46D0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = mehdadzaman;
+				TargetAttributes = {
+					EFAB41FA2495DB0000A46D0E = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					EFAB42102495DB0300A46D0E = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = EFAB41FA2495DB0000A46D0E;
+					};
+					EFAB421B2495DB0300A46D0E = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = EFAB41FA2495DB0000A46D0E;
+					};
+				};
+			};
+			buildConfigurationList = EFAB41F62495DB0000A46D0E /* Build configuration list for PBXProject "CatchMe App" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFAB41F22495DB0000A46D0E;
+			productRefGroup = EFAB41FC2495DB0000A46D0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFAB41FA2495DB0000A46D0E /* CatchMe App */,
+				EFAB42102495DB0300A46D0E /* CatchMe AppTests */,
+				EFAB421B2495DB0300A46D0E /* CatchMe AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFAB41F92495DB0000A46D0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFAB420B2495DB0300A46D0E /* LaunchScreen.storyboard in Resources */,
+				EFAB42082495DB0300A46D0E /* Assets.xcassets in Resources */,
+				EFAB42062495DB0000A46D0E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAB420F2495DB0300A46D0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAB421A2495DB0300A46D0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFAB41F72495DB0000A46D0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFAB42032495DB0000A46D0E /* ViewController.swift in Sources */,
+				EFAB41FF2495DB0000A46D0E /* AppDelegate.swift in Sources */,
+				EFAB42012495DB0000A46D0E /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAB420D2495DB0300A46D0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFAB42162495DB0300A46D0E /* CatchMe_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAB42182495DB0300A46D0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFAB42212495DB0300A46D0E /* CatchMe_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFAB42132495DB0300A46D0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFAB41FA2495DB0000A46D0E /* CatchMe App */;
+			targetProxy = EFAB42122495DB0300A46D0E /* PBXContainerItemProxy */;
+		};
+		EFAB421E2495DB0300A46D0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFAB41FA2495DB0000A46D0E /* CatchMe App */;
+			targetProxy = EFAB421D2495DB0300A46D0E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EFAB42042495DB0000A46D0E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFAB42052495DB0000A46D0E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EFAB42092495DB0300A46D0E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFAB420A2495DB0300A46D0E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFAB42232495DB0300A46D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EFAB42242495DB0300A46D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EFAB42262495DB0300A46D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CatchMe App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mehdadzaman.CatchMe-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EFAB42272495DB0300A46D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CatchMe App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mehdadzaman.CatchMe-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EFAB42292495DB0300A46D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CatchMe AppTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mehdadzaman.CatchMe-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatchMe App.app/CatchMe App";
+			};
+			name = Debug;
+		};
+		EFAB422A2495DB0300A46D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CatchMe AppTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mehdadzaman.CatchMe-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatchMe App.app/CatchMe App";
+			};
+			name = Release;
+		};
+		EFAB422C2495DB0300A46D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CatchMe AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mehdadzaman.CatchMe-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CatchMe App";
+			};
+			name = Debug;
+		};
+		EFAB422D2495DB0300A46D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CatchMe AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mehdadzaman.CatchMe-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CatchMe App";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFAB41F62495DB0000A46D0E /* Build configuration list for PBXProject "CatchMe App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFAB42232495DB0300A46D0E /* Debug */,
+				EFAB42242495DB0300A46D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFAB42252495DB0300A46D0E /* Build configuration list for PBXNativeTarget "CatchMe App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFAB42262495DB0300A46D0E /* Debug */,
+				EFAB42272495DB0300A46D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFAB42282495DB0300A46D0E /* Build configuration list for PBXNativeTarget "CatchMe AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFAB42292495DB0300A46D0E /* Debug */,
+				EFAB422A2495DB0300A46D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFAB422B2495DB0300A46D0E /* Build configuration list for PBXNativeTarget "CatchMe AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFAB422C2495DB0300A46D0E /* Debug */,
+				EFAB422D2495DB0300A46D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFAB41F32495DB0000A46D0E /* Project object */;
+}
