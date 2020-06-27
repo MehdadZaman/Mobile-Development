@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AllNutritionalLogsPage">
+
+    <TextView
+        android:id="@+id/dailyNutritionalLogs"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#007600"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Nutritional Logs"
+        android:textColor="@android:color/white"
+        android:textSize="35sp" />
+
+    <LinearLayout
+        android:id="@+id/buttonsAllNutrition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/dailyNutritionalLogs"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginTop="50dp"
+            android:text="Add Date Item"
+            android:onClick="addItemLogs"
+            android:gravity="left"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginTop="50dp"
+            android:text="Back Home"
+            android:onClick="backHomeLogs"
+            android:gravity="right"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dateList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ffffff"
+        android:padding="4dp"
+        android:background="@android:color/darker_gray"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/buttonsAllNutrition"/>
+
+</RelativeLayout>

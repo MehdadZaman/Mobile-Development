@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Nutritional Helper</string>
+    <string name="Add_allergens_Title">ADD FOOD ALLERGENS</string>
+    <string name="Add_Allergens_title2">Add Ingredients that you are allergic to</string>
+    <string name="HomePageTitle">Nutritional Helper</string>
+    <string name="scanButtonText">Scan Barcode</string>
+    <string name="dining_Location_Button">Dining Locations</string>
+    <string name="campus_dining_Button">Campus Dining</string>
+    <string name="add_Button_Text">Add</string>
+    <string name="Done_Adding_Button">Done</string>
+    <string name="PatientsButtonText">Patients</string>
+</resources>

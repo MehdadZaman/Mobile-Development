@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "787107493362",
+    "firebase_url": "https://nutritional-helper.firebaseio.com",
+    "project_id": "nutritional-helper",
+    "storage_bucket": "nutritional-helper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787107493362:android:15db4db6cf077590e2e76b",
+        "android_client_info": {
+          "package_name": "com.example.nutritionalhelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787107493362-2jl9133ei1e429bfurcjbi1qvof9bjvf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nutritionalhelper",
+            "certificate_hash": "f6d5aad3b3f51c157a7213aefce5fdcf77d4bcb0"
+          }
+        },
+        {
+          "client_id": "787107493362-cpgtr4p30vj0m6lvnknhmmujon9r84hq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAURnjqdpETPp30jgVN3uac_-bkrxlBNB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787107493362-cpgtr4p30vj0m6lvnknhmmujon9r84hq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
