@@ -146,6 +146,8 @@ public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNu
         intent.putExtra("Nutritional Numbers", new double[]{currentDateValues.get(0), currentDateValues.get(1),
                                                                     currentDateValues.get(2), currentDateValues.get(3),
                                                                     currentDateValues.get(4)});
+
+        intent.putExtra("dateString", historicalDateValues.get(position).getDate());
         startActivity(intent);
     }
 

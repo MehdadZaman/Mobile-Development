@@ -44,6 +44,8 @@ public class DailyLogPage extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
 
+    TextView dayTitle;
+
     /***
      * Intake values
      */
@@ -62,6 +64,13 @@ public class DailyLogPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_log_page);
+
+        dayTitle = findViewById(R.id.barChartTitle2);
+        String dateTitleString = getIntent().getStringExtra("dateString");
+        if(dateTitleString != null)
+        {
+            dayTitle.setText(dateTitleString);
+        }
 
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
