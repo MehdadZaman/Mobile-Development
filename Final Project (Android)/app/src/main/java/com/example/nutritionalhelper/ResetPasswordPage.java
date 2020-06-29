@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for the ResetPasswordPage
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -18,12 +26,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordPage extends AppCompatActivity {
 
+    /***
+     * Screen view components
+     */
     TextView messageReset;
     Button resetPassword;
     EditText email;
 
     String emailStr;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +48,23 @@ public class ResetPasswordPage extends AppCompatActivity {
         email = findViewById(R.id.emailEnterPasswordReset);
     }
 
+
+    /***
+     * Back to login page
+     *
+     * @param v button click
+     */
     public void logInBackReset(View v)
     {
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Send email to reset password
+     *
+     * @param v button click
+     */
     public void sendReset(View v)
     {
         emailStr = email.getText().toString();
@@ -50,6 +76,9 @@ public class ResetPasswordPage extends AppCompatActivity {
         sendPasswordResetEmail();
     }
 
+    /***
+     * Send reset email password from firebase
+     */
     public void sendPasswordResetEmail() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.sendPasswordResetEmail(emailStr)

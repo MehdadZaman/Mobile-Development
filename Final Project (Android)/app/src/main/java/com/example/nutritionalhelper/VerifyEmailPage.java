@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for the email verification page
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -20,6 +28,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class VerifyEmailPage extends AppCompatActivity {
 
+    /***
+     * Screen view components
+     */
     private TextView message;
     private Button verifyEmail;
     private EditText email;
@@ -28,8 +39,15 @@ public class VerifyEmailPage extends AppCompatActivity {
     private String emailStr;
     private String passwordStr;
 
+    /***
+     * Firebase and Firestore access objects
+     */
     private FirebaseAuth mAuth;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +60,22 @@ public class VerifyEmailPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    /***
+     * Go back to login page
+     *
+     * @param v Button click
+     */
     public void logInBackVerify(View v)
     {
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Button click to send verification email
+     *
+     * @param v Button click
+     */
     public void sendVerify(View v)
     {
         emailStr = email.getText().toString();
@@ -84,6 +112,9 @@ public class VerifyEmailPage extends AppCompatActivity {
                 });
     }
 
+    /***
+     * Sends email if email is valid
+     */
     public void sendEmailVerification() {
         final FirebaseUser user = mAuth.getCurrentUser();
         if(user.isEmailVerified())

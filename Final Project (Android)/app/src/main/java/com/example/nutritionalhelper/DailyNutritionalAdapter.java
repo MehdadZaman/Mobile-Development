@@ -1,3 +1,12 @@
+/***
+ * This class is the adapter for the Recyclerview
+ * of all of the past daily intakes
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import android.content.Context;
@@ -26,21 +35,39 @@ import java.util.Map;
 
 public class DailyNutritionalAdapter extends RecyclerView.Adapter<DailyNutritionalAdapter.DailyNutritionalViewHolder>{
 
+    /***
+     * ArrayLists of datasource information
+     */
     ArrayList<HistoricalDateValues> historicalDateValues;
 
     private OnNoteListener mOnNoteListener;
 
+    /***
+     * Firebase and Firestore access objects
+     */
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
 
+    /***
+     * Class for each of the individual cells
+     */
     public static class DailyNutritionalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        /***
+         * Display components
+         */
         TextView dateDisplay;
         Button displayDetailsButton;
         Button displayDeleteButton;
 
         OnNoteListener onNoteListener;
 
+        /***
+         * Constructor that makes the cell
+         *
+         * @param itemView the view of the cell
+         * @param onNoteListener the onClick listen for viewing daily intakes
+         */
         public DailyNutritionalViewHolder(View itemView, OnNoteListener onNoteListener) {
             super(itemView);
 
@@ -52,6 +79,11 @@ public class DailyNutritionalAdapter extends RecyclerView.Adapter<DailyNutrition
             displayDetailsButton.setOnClickListener(this);
         }
 
+        /***
+         * Button click that acquires position
+         *
+         * @param v button click
+         */
         @Override
         public void onClick(View v) {
             onNoteListener.onNoteClick(getAdapterPosition());
@@ -59,9 +91,21 @@ public class DailyNutritionalAdapter extends RecyclerView.Adapter<DailyNutrition
     }
 
     public interface OnNoteListener{
+
+        /***
+         * Button click at a position
+         *
+         * @param position position of the cell
+         */
         void onNoteClick(int position);
     }
 
+    /***
+     * Constructor for adapter
+     *
+     * @param historicalDateValues datasource arraylist
+     * @param onNoteListener onclick listener for viewing daily intakes
+     */
     public DailyNutritionalAdapter(ArrayList<HistoricalDateValues> historicalDateValues, OnNoteListener onNoteListener) {
         this.historicalDateValues = historicalDateValues;
         this.mOnNoteListener = onNoteListener;
@@ -70,6 +114,13 @@ public class DailyNutritionalAdapter extends RecyclerView.Adapter<DailyNutrition
         db = FirebaseFirestore.getInstance();
     }
 
+    /***
+     * Creates the cell
+     *
+     * @param parent Parent recycler view
+     * @param viewType type of view
+     * @return return of the cell
+     */
     @NonNull
     @Override
     public DailyNutritionalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -79,6 +130,12 @@ public class DailyNutritionalAdapter extends RecyclerView.Adapter<DailyNutrition
         return dnvh;
     }
 
+    /***
+     * Method that attaches the subviews to the cell
+     *
+     * @param holder the cell holder
+     * @param position the position of the cell in the recyclerview
+     */
     @Override
     public void onBindViewHolder(@NonNull final DailyNutritionalViewHolder holder, final int position) {
 
@@ -106,6 +163,11 @@ public class DailyNutritionalAdapter extends RecyclerView.Adapter<DailyNutrition
 
     }
 
+    /***
+     * returns the number of desired cells
+     *
+     * @return number of desired cells
+     */
     @Override
     public int getItemCount() {
         return historicalDateValues.size();

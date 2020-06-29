@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for the signup page
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -28,10 +36,15 @@ import java.util.Map;
 
 public class SignUpPage extends AppCompatActivity {
 
-    //FireStore
+    /***
+     * Firebase and Firestore access objects
+     */
     FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
+    /***
+     * Screen view components
+     */
     private EditText name;
     private EditText email;
     private EditText password;
@@ -43,6 +56,11 @@ public class SignUpPage extends AppCompatActivity {
     private TextView invalidSignUp;
     private Button signUp;
 
+
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +80,10 @@ public class SignUpPage extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
     }
 
+    /***
+     * Signup acquires user input
+     * @param v button click
+     */
     public void signUpClick(View v)
     {
         nameStr = name.getText().toString();
@@ -77,12 +99,24 @@ public class SignUpPage extends AppCompatActivity {
         mAuth.signOut();
     }
 
+    /***
+     * Back to login page
+     *
+     * @param v button click
+     */
     public void backToLoginClick(View v)
     {
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
 
+
+    /***
+     * Creates account on firebase
+     *
+     * @param email user email
+     * @param password user password
+     */
     public void createAccount(String email, String password)
     {
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -113,6 +147,9 @@ public class SignUpPage extends AppCompatActivity {
                 });
     }
 
+    /***
+     * Sends email if email is valid
+     */
     public void sendEmailVerification() {
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
@@ -136,6 +173,10 @@ public class SignUpPage extends AppCompatActivity {
                 });
     }
 
+    /***
+     * Handles invalid user input
+     * @return boolean on whether or not the input is invalid
+     */
     public boolean validateForm() {
         boolean valid = true;
 
@@ -152,7 +193,9 @@ public class SignUpPage extends AppCompatActivity {
         return valid;
     }
 
-    //FireStore
+    /***
+     * Adds the user to firebase
+     */
     public void addUserToDataBase()
     {
         Map<String, Object> userData = new HashMap<>();

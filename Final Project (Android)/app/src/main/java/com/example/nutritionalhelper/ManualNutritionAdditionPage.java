@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for manual meal nutrition entry
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -30,23 +38,39 @@ import java.util.Map;
 
 public class ManualNutritionAdditionPage extends AppCompatActivity {
 
+    /***
+     * View components
+     */
     private EditText calorieText;
     private EditText fatText;
     private EditText fiberText;
     private EditText sodiumText;
     private EditText proteinText;
 
+    /***
+     * numerical intake values
+     */
     private int calorie;
     private int fat;
     private int fiber;
     private int sodium;
     private int protein;
 
+    /***
+     * Firebase and Firestore access objects
+     */
     private FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
 
+    /***
+     * nutritional intake values
+     */
     int[] nutritionIntegers;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +86,10 @@ public class ManualNutritionAdditionPage extends AppCompatActivity {
         proteinText = findViewById(R.id.intakeProtein);
     }
 
+    /***
+     * Adds a meals nutrition
+     * @param v button click
+     */
     public void addMealClick(View v)
     {
         try {calorie = Integer.parseInt(calorieText.getText().toString());} catch (Exception e){e.printStackTrace();}
@@ -72,6 +100,9 @@ public class ManualNutritionAdditionPage extends AppCompatActivity {
         processIngredients();
     }
 
+    /***
+     * Puts nutritional intake on firebase
+     */
     public void processIngredients()
     {
         //Weird cases below
@@ -102,6 +133,11 @@ public class ManualNutritionAdditionPage extends AppCompatActivity {
         });
     }
 
+    /***
+     * Calculates inatke values
+     * @param nutNums Maximum daily intakes
+     * @param maxNums Current daily intakes
+     */
     public void processIngredients2(ArrayList<Long> nutNums,ArrayList<Long> maxNums)
     {
         for(int i = 0; i < nutritionIntegers.length; i++)
@@ -116,6 +152,9 @@ public class ManualNutritionAdditionPage extends AppCompatActivity {
         PopNotificationWarning(nutNums, maxNums);
     }
 
+    /***
+     * Shows Alert dialog that item has been added
+     */
     public void showDialogueNutritionAdded()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(ManualNutritionAdditionPage.this);
@@ -135,6 +174,12 @@ public class ManualNutritionAdditionPage extends AppCompatActivity {
         builder.create().show();
     }
 
+    /***
+     * Shows notification if maximum daily limit has been reached
+     *
+     * @param nutNums current nutritional numbers
+     * @param maxIntakes maximum daily intakes
+     */
     public void PopNotificationWarning(ArrayList<Long> nutNums, ArrayList<Long> maxIntakes){
         String s="";
         boolean flag= false;

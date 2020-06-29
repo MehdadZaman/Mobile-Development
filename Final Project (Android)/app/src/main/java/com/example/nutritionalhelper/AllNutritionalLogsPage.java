@@ -1,3 +1,12 @@
+/***
+ * This class is the activity that shows a Recyclerview
+ * of all of the past daily intakes
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -36,20 +45,32 @@ import java.util.Map;
 
 public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNutritionalAdapter.OnNoteListener, AddDateValuesDialog.AddDateValueDialogListener {
 
+    /***
+     * Firebase and Firestore access objects
+     */
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
 
+    /***
+     * ArrayLists of datasource information
+     */
     ArrayList<String> dates;
     ArrayList<ArrayList<Long>> dateValues;
-
     ArrayList<HistoricalDateValues> historicalDateValues;
 
+    /***
+     * Recyclerview and related objects
+     */
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     AddDateValuesDialog addDateValuesDialog;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +85,9 @@ public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNu
         setupRecycler();
     }
 
+    /***
+     * Sets up the recyclerview
+     */
     public void setupRecycler() {
         recyclerView = findViewById(R.id.dateList);
         recyclerView.setHasFixedSize(true);
@@ -75,6 +99,9 @@ public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNu
         recyclerView.setAdapter(adapter);
     }
 
+    /***
+     * Acquires info from firebase and files datasource arraylists
+     */
     public void setHistoricalArrayList()
     {
         final DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
@@ -106,6 +133,12 @@ public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNu
 
     }
 
+    /***
+     * Listens for clicks from a cell in the adapter and sends user to see that
+     * days intakes
+     *
+     * @param position The position of the cell in the recyclerview
+     */
     @Override
     public void onNoteClick(int position) {
         Intent intent = new Intent(this, DailyLogPage.class);
@@ -116,13 +149,26 @@ public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNu
         startActivity(intent);
     }
 
+    /***
+     * Button click that sends the user back to the homepage
+     * @param view Click
+     */
     public void backHomeLogs(View view) {
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 
+    /***
+     * The date string
+     */
     String currentDateString = "";
 
+    /***
+     * Button that creates a new Dialog for the user to enter new
+     * nutritional info
+     *
+     * @param view Click
+     */
     public void addItemLogs(View view) {
 
         Calendar cal = Calendar.getInstance();
@@ -144,6 +190,15 @@ public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNu
         dialog.show();
     }
 
+    /***
+     * Button that fills datasource with acquired info
+     *
+     * @param calorieInt Calorie input value
+     * @param fatInt Fat input value
+     * @param fiberInt Fiber input value
+     * @param sodiumInt Sodium input value
+     * @param proteinInt Protein input value
+     */
     @Override
     public void applyTexts(int calorieInt, int fatInt, int fiberInt, int sodiumInt, int proteinInt) {
 
@@ -183,8 +238,20 @@ public class AllNutritionalLogsPage extends AppCompatActivity implements DailyNu
         addDateValuesDialog.dismiss();
     }
 
+    /***
+     * Comparator that sorts dates in the recyclerview
+     */
     static class HistoricalDateComparator implements Comparator<HistoricalDateValues> {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        /***
+         * Compares two historical date objects
+         *
+         * @param t1 HistoricalDate object
+         * @param t2 HistoricalDate object
+         *
+         * @return number representing which one is bigger
+         */
         public int compare(HistoricalDateValues t1, HistoricalDateValues t2) {
             try {
                 return dateFormat.parse(t1.getDate()).compareTo(dateFormat.parse(t2.getDate()));

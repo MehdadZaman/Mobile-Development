@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for the loginpage
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -26,9 +34,15 @@ import java.util.Map;
 
 public class LoginPage extends AppCompatActivity {
 
+    /***
+     * Firebase and Firestore access objects
+     */
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
+    /***
+     * Screen view components
+     */
     private EditText email;
     private EditText password;
 
@@ -37,6 +51,10 @@ public class LoginPage extends AppCompatActivity {
     private String emailStr;
     private String passwordStr;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +68,9 @@ public class LoginPage extends AppCompatActivity {
         resumeSession();
     }
 
+    /***
+     * Takes user to homepage if already logged in
+     */
     public void resumeSession() {
         try {
             String s = mAuth.getCurrentUser().getUid();
@@ -62,6 +83,10 @@ public class LoginPage extends AppCompatActivity {
         {}
     }
 
+    /***
+     * Logs in user after reading email and password
+     * @param v button click
+     */
     public void logInClick(View v)
     {
         emailStr = email.getText().toString();
@@ -73,6 +98,12 @@ public class LoginPage extends AppCompatActivity {
         loginUser(emailStr, passwordStr);
     }
 
+    /***
+     * Checks firebase for user credentials
+     *
+     * @param email user email
+     * @param password user password
+     */
     public void loginUser(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -98,12 +129,21 @@ public class LoginPage extends AppCompatActivity {
                 });
     }
 
+    /***
+     * Takes user to signup page
+     * @param v button click
+     */
     public void signUpHereClick(View v)
     {
         Intent intent = new Intent(this, SignUpPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Makes sure the edittexts are not empty
+     *
+     * @return boolean on whether or not email and passowrd fields are empty
+     */
     public boolean validateForm() {
         boolean valid = true;
         if (TextUtils.isEmpty(emailStr)) {
@@ -117,18 +157,31 @@ public class LoginPage extends AppCompatActivity {
         return valid;
     }
 
+    /***
+     * Takes user to reset password page
+     * @param v button click
+     */
     public void resetPasswordClick(View v)
     {
         Intent intent = new Intent(this, ResetPasswordPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Takes user to verify account page
+     * @param v button click
+     */
     public void verifyAccountClick(View v)
     {
         Intent intent = new Intent(this, VerifyEmailPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Acquires user info to login and send to homepage
+     *
+     * @param currentUser the current logged in user
+     */
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null)
         {

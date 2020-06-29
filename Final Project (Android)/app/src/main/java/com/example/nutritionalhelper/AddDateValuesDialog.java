@@ -1,3 +1,12 @@
+/***
+ * This class is used as the Alert Dialog for the user to enter
+ * their nutritional intakes for a a past day.
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import android.app.AlertDialog;
@@ -18,16 +27,27 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class AddDateValuesDialog extends AppCompatDialogFragment {
 
+    /***
+     * Physical layout components on the page
+     */
     EditText calorieInput;
     EditText fatInput;
     EditText fiberInput;
     EditText sodiumInput;
     EditText proteinInput;
-
     Button saveButton;
 
+    /***
+     * The listener which will tell the original activity about an update
+     */
     private AddDateValueDialogListener addItemDialogListener;
 
+    /***
+     * The method that creates the Dialog
+     *
+     * @param savedInstanceState the current state
+     * @return an instance of the Dialog
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
@@ -97,6 +117,11 @@ public class AddDateValuesDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    /***
+     * Displays the Dialog in the current context
+     *
+     * @param context The context of the view that is starting this Dialog
+     */
     @Override
     public void onAttach(Context context)
     {
@@ -108,7 +133,20 @@ public class AddDateValuesDialog extends AppCompatDialogFragment {
         {}
     }
 
+    /***
+     * The interface for classes that are listening for the results from the
+     * Dialog
+     */
     public interface AddDateValueDialogListener {
+        /***
+         * Method that sends the information from the Dialog over to the activity
+         *
+         * @param calorieInt Calorie input value
+         * @param fatInt Fat input value
+         * @param fiberInt Fiber input value
+         * @param sodiumInt Sodium input value
+         * @param proteinInt Protein input value
+         */
         void applyTexts(int calorieInt, int fatInt, int fiberInt, int sodiumInt, int proteinInt);
     }
 }

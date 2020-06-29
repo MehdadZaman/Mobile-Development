@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for the QR Scanner entry
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -40,14 +48,24 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class QRNutritionScanner extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
+    /***
+     * Camera scanner
+     */
     private ZXingScannerView scannerView;
     private TextView txtResult;
 
+    /***
+     * Firebase and Firestore access objects
+     */
     private FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
 
     int[] nutritionIntegers;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,17 +99,28 @@ public class QRNutritionScanner extends AppCompatActivity implements ZXingScanne
                 }).check();
     }
 
+    /***
+     * Stops camera if ended
+     */
     @Override
     public void onDestroy() {
         scannerView.stopCamera();
         super.onDestroy();
     }
 
+    /***
+     * Handles the picture image
+     * @param rawResult result picture image
+     */
     @Override
     public void handleResult(Result rawResult) {
         processRawResult(rawResult.getText());
     }
 
+    /***
+     * Processes acquired string
+     * @param s String from QR code scanner
+     */
     public void processRawResult(String s) {
         s = s.toLowerCase();
         if(s.startsWith("nutritional information:"))
@@ -107,6 +136,11 @@ public class QRNutritionScanner extends AppCompatActivity implements ZXingScanne
         }
     }
 
+    /***
+     * Processes nutritional intakes and parses string for values
+     *
+     * @param nutritionalNumbers String of numbers to be parsed
+     */
     public void processIngredients(String nutritionalNumbers)
     {
         String[] nutritionList = nutritionalNumbers.split(",");
@@ -141,6 +175,12 @@ public class QRNutritionScanner extends AppCompatActivity implements ZXingScanne
         });
     }
 
+    /***
+     * Updates intake values on firebase
+     *
+     * @param nutNums current nutritional numbers
+     * @param maxIntakes maximum daily intakes
+     */
     public void processIngredients2(ArrayList<Long> nutNums, ArrayList<Long> maxIntakes)
     {
         for(int i = 0; i < nutritionIntegers.length; i++)
@@ -153,6 +193,9 @@ public class QRNutritionScanner extends AppCompatActivity implements ZXingScanne
         showDialogueNutritionAdded(nutNums, maxIntakes);
     }
 
+    /***
+     * Shows invalid dialog if invalid QR code
+     */
     public void showDialogueInvalidQRCode()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(QRNutritionScanner.this);
@@ -172,6 +215,13 @@ public class QRNutritionScanner extends AppCompatActivity implements ZXingScanne
         builder.create().show();
     }
 
+
+    /***
+     * Shows dialog of added meal and numbers
+     *
+     * @param nutNums current nutritional numbers
+     * @param maxIntakes maximum daily intakes
+     */
     public void showDialogueNutritionAdded(ArrayList<Long> nutNums, ArrayList<Long> maxIntakes)
     {
         PopNotificationWarning(nutNums, maxIntakes);
@@ -192,6 +242,12 @@ public class QRNutritionScanner extends AppCompatActivity implements ZXingScanne
         builder.create().show();
     }
 
+    /***
+     * Shows notification if maximum daily limit has been reached
+     *
+     * @param nutNums current nutritional numbers
+     * @param maxIntakes maximum daily intakes
+     */
     public void PopNotificationWarning(ArrayList<Long> nutNums, ArrayList<Long> maxIntakes){
         String s="";
         boolean flag= false;

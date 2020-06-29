@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for the homepage
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -41,6 +49,9 @@ public class HomePage extends AppCompatActivity {
 
     Button dailyInatakesButton;
 
+    /***
+     * Firebase and Firestore access objects
+     */
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
@@ -50,6 +61,10 @@ public class HomePage extends AppCompatActivity {
 
     private TextView emailView;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,18 +85,33 @@ public class HomePage extends AppCompatActivity {
         checkOverFlow();
     }
 
+    /***
+     * Goes to settings page
+     *
+     * @param view Button click
+     */
     public void setSettingsInfo(View view)
     {
         Intent intent = new Intent(this, SettingsPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Goes to QR scanner page
+     *
+     * @param view Button click
+     */
     public void gotoQRScanner(View view)
     {
         Intent intent = new Intent(this, QRNutritionScanner.class);
         startActivity(intent);
     }
 
+    /***
+     * Goes back to login page and logs user out
+     *
+     * @param v Button click
+     */
     public void onClickLogout(View v){
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, LoginPage.class);
@@ -89,16 +119,29 @@ public class HomePage extends AppCompatActivity {
         ActivityCompat.finishAffinity(this);
     }
 
+    /***
+     * Goes to manual meal nutrition input page
+     *
+     * @param v Button click
+     */
     public void manualPageClick(View v){
         Intent intent = new Intent(this, ManualNutritionAdditionPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Goes to all nutritional logs page
+     *
+     * @param v Button click
+     */
     public void allNutritionalLogsClick(View v){
         Intent intent = new Intent(this, AllNutritionalLogsPage.class);
         startActivity(intent);
     }
 
+    /***
+     * Checks if current intake values have gone over maximum
+     */
     public void checkOverFlow()
     {
         final DocumentReference docRef = db.collection("users").document(mAuth.getCurrentUser().getUid());
@@ -119,6 +162,11 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
+    /***
+     * Compares current total and max totals. Makes the bar red if necessary
+     * @param maxIntakes
+     * @param dailyIntakes
+     */
     public void compareValues(ArrayList<Long> maxIntakes, ArrayList<Long> dailyIntakes)
     {
         boolean setRed = false;
@@ -137,6 +185,11 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
+    /***
+     * View the current intakes
+     *
+     * @param v button click
+     */
     public void currentNutritionalIntakeClick(View v){
 
         Intent intent = new Intent(this, CurrentNutritionalIntakesPage.class);

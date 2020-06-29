@@ -1,3 +1,11 @@
+/***
+ * This class is the activity for the the settings page to set the values
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -28,6 +36,9 @@ import java.util.Map;
 
 public class SettingsPage extends AppCompatActivity {
 
+    /***
+     * Screen view components
+     */
     LinearLayout manNutrition;
 
     private EditText ageText;
@@ -46,6 +57,9 @@ public class SettingsPage extends AppCompatActivity {
     private EditText sodiumText;
     private EditText proteinText;
 
+    /***
+     * Personal information
+     */
     private int age;
     private int weight;
     private int heightFeet;
@@ -58,11 +72,18 @@ public class SettingsPage extends AppCompatActivity {
     private int sodium;
     private int protein;
 
+    /***
+     * Firebase and Firestore access objects
+     */
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
 
     private int height;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +112,11 @@ public class SettingsPage extends AppCompatActivity {
         setOriginalValues1();
     }
 
+    /***
+     * Parses edittext values after clicking
+     *
+     * @param v button click
+     */
     public void saveSettingsClick(View v)
     {
         try {age = Integer.parseInt(ageText.getText().toString());} catch (Exception e){e.printStackTrace();}
@@ -124,6 +150,9 @@ public class SettingsPage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /***
+     * If no change has been made, keeps the old values
+     */
     public void setOriginalValues1()
     {
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -144,6 +173,11 @@ public class SettingsPage extends AppCompatActivity {
         });
     }
 
+    /***
+     * Acquires old information from firebase
+     *
+     * @param dataMap The user info from firebase
+     */
     public void setOriginalValues2(Map<String, Object> dataMap)
     {
         age = (int)((long)dataMap.get("Age"));
@@ -160,6 +194,9 @@ public class SettingsPage extends AppCompatActivity {
         protein = (int)((long)maxIntakes.get(4));
     }
 
+    /***
+     * Fills user info on firebase
+     */
     public void fillDatabase()
     {
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -174,6 +211,9 @@ public class SettingsPage extends AppCompatActivity {
         df.update("Max Intakes", Arrays.asList(calorie, fat, fiber, sodium, protein));
     }
 
+    /***
+     * Checks and handles invalid numerical values
+     */
     public void autoFillNutrition()
     {
         if(calorie == 0)
@@ -235,6 +275,11 @@ public class SettingsPage extends AppCompatActivity {
         }
     }
 
+    /***
+     * Check to set max nutritional intakes manually
+     *
+     * @param v Checkbox view click
+     */
     public void setManualVisibility(View v)
     {
         if(checkManual.isChecked())

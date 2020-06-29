@@ -1,3 +1,11 @@
+/***
+ * This class is the barchart for the past daily intakes
+ *
+ * @author Mehdad Zaman
+ * @id 112323211
+ * Final Project
+ * CSE 390 Section 2
+ */
 package com.example.nutritionalhelper;
 
 import androidx.annotation.NonNull;
@@ -30,9 +38,15 @@ import java.util.Map;
 
 public class DailyLogPage extends AppCompatActivity {
 
+    /***
+     * Firebase and Firestore access objects
+     */
     FirebaseAuth firebaseAuth;
     FirebaseFirestore db;
 
+    /***
+     * Intake values
+     */
     private double caloriePercentage;
     private double fatPercentage;
     private double fiberPercentage;
@@ -40,6 +54,10 @@ public class DailyLogPage extends AppCompatActivity {
     private double proteinPercentage;
     private BarChart barChart;
 
+    /***
+     * Starts the activity on the screen
+     * @param savedInstanceState The previous saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +69,9 @@ public class DailyLogPage extends AppCompatActivity {
         setIntakePercentages();
     }
 
+    /***
+     * Acquires max intakes from firebase
+     */
     public void setIntakePercentages()
     {
         final DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
@@ -77,6 +98,11 @@ public class DailyLogPage extends AppCompatActivity {
         });
     }
 
+    /***
+     * Calculates percentage values
+     * @param maxIntakes Maximum daily intakes
+     * @param dailyIntakes Current daily intakes
+     */
     public void setIntakePercentages2(ArrayList<Long> maxIntakes, ArrayList<Long> dailyIntakes)
     {
         if(maxIntakes.get(0) !=  0)
@@ -104,6 +130,15 @@ public class DailyLogPage extends AppCompatActivity {
         showWarningMessage(dailyIntakes, maxIntakes);
     }
 
+    /***
+     * Creates the physical bargraph
+     *
+     * @param calorie calorie percentage
+     * @param fat fat percentage
+     * @param fiber fiber percentage
+     * @param sodium sodium percentage
+     * @param protein protein percentage
+     */
     public void createBarGraph(double calorie, double fat, double fiber, double sodium, double protein){
 
         barChart = (BarChart) findViewById(R.id.barChart2);
@@ -181,6 +216,12 @@ public class DailyLogPage extends AppCompatActivity {
         barChart.setData(data);
     }
 
+    /***
+     * Compares values and shows warning messages if daily max values have been reached
+     *
+     * @param maxIntakes Maximum daily intakes
+     * @param dailyIntakes Current daily intakes
+     */
     public void showWarningMessage(ArrayList<Long> dailyIntakes, ArrayList<Long> maxIntakes){
         boolean flag = false;
         for(int i =0; i< dailyIntakes.size(); i++){
